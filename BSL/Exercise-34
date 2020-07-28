@@ -1,0 +1,17 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname Exercise-34) (read-case-sensitive #t) (teachpacks ((lib "universe.rkt" "teachpack" "2htdp") (lib "image.rkt" "teachpack" "2htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "universe.rkt" "teachpack" "2htdp") (lib "image.rkt" "teachpack" "2htdp")) #f)))
+;Exercise 34. Design the functon string-first, which extracts the first character from
+;a non-empty string. Don't worry about empty strings.
+
+;signature
+;statement of purpose
+;function header
+
+; String -> String
+; extracts the first character from the input-str
+; given: "tank", expect:"t"
+; given: "o", expect:"o"
+(define (string-first input-str)
+  (string-ith input-str 0))
+(string-last "prank")

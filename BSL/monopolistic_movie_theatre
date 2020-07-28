@@ -1,0 +1,33 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname monopolistic_movie_theatre) (read-case-sensitive #t) (teachpacks ((lib "image.rkt" "teachpack" "htdp") (lib "universe.rkt" "teachpack" "2htdp") (lib "batch-io.rkt" "teachpack" "2htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "image.rkt" "teachpack" "htdp") (lib "universe.rkt" "teachpack" "2htdp") (lib "batch-io.rkt" "teachpack" "2htdp")) #f)))
+;Exercise 30. Define constants for the price optimization program at the
+;movie theater so that the price sensitivity of attendance (15 people for every
+;10 cents) becomes a computed constant.
+;--- Since I was already smart enough to do try that out beforehand, there is nothing to do here.
+
+;##Monopolistic Movie Theatre##AA
+;variables or magic numbers
+(define PIVOT-TICKET-PRICE 5.0)   ;current ticket price
+(define PRICE-SENSITIVITY 150)    ;150 people increase/decrease per dollar decrease/increase in TICKET-PRICE 
+(define FIXED-COST 180)
+(define COST-PER-ATTENDEE 1.5)
+
+
+;functions
+(define (attendees ticket-price)
+  (- 120 (* (- ticket-price PIVOT-TICKET-PRICE) CUSTOMER-FLUX-PER-DOLLAR)))
+
+(define (revenue ticket-price)
+  (* ticket-price (attendees ticket-price)))
+
+;(define (cost ticket-price)
+;  (+ FIXED-COST (* COST-PER-ATTENDEE (attendees ticket-price))))
+(define (cost ticket-price)
+  (* COST-PER-ATTENDEE (attendees ticket-price)))
+
+(define (profit ticket-price)
+  (- (revenue ticket-price)
+     (cost ticket-price)))
+
+(profit 3.65)
